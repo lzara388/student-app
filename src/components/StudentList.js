@@ -1,19 +1,17 @@
-import React from 'react';
 import './StudentList.css';
 import PropTypes from 'prop-types';
 import Student from './Student';
 
 const StudentList = (props) => {
-
-    const studentComponents = props.students.map((student) => {
+    const studentComponents = props.students.map((student, index) => {
         return (
-            <li key={student.id}>
+            <li key={index}>
                 <Student
+                    id={student.id}
                     name={student.nameData}
                     email={student.emailData}
-                    id={student.id}
-                    isPresent={student.isPresent}
-                    onUpdateStudent={props.onUpdateStudent}
+                    isPresent={student.isPresentData}
+                    onUpdate={props.onUpdateStudent}
                 ></Student>
             </li>
         );
@@ -31,12 +29,12 @@ const StudentList = (props) => {
 
 StudentList.propTypes = {
     students: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
         nameData: PropTypes.string.isRequired,
         emailData: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        isPresent: PropTypes.bool.isRequired,
-        onUpdateStudent: PropTypes.func.isRequired,
-    })).isRequired
+        isPresentData: PropTypes.bool
+    })),
+    onUpdateStudent: PropTypes.func
 };
 
 export default StudentList;
