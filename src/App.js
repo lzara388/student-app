@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NewStudentForm from './components/NewStudentForm';
 import StudentList from './components/StudentList';
 
 function App() {
@@ -40,8 +41,9 @@ function App() {
             <h1>Attendance</h1>
             <StudentList
                 students={studentData}
-                onUpdateStudent={updateStudentData}
-                ></StudentList>
+                onUpdateStudent={updateStudentData}>
+            </StudentList>
+            <NewStudentForm />
         </main>
     );
 }
